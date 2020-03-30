@@ -3,9 +3,8 @@
   "plugins": ["favicon", "yahei", "github", "autotheme", "-lunr", "-search",
     "search-plus", "prism", "-highlight", "github-buttons", "splitter",
     "-sharing", "sharing-plus", "tbfed-pagefooter", "expandable-chapters-small",
-    "book-summary-scroll-position-saver", "ga", "baidu", "donate",
-    "anchors", "anchor-navigation-ex", "sitemap-general",
-    "copy-code-button", "mygitalk", "multipart"
+    "book-summary-scroll-position-saver", "anchors", "anchor-navigation-ex",
+    "copy-code-button", "multipart"
   ],
   "pluginsConfig": {
     "theme-default": {
