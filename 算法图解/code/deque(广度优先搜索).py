@@ -1,34 +1,32 @@
 from collections import deque
 graph = {
-    'you': ['alice', 'bob', 'claire'],
-    'bob': ['anuj', 'peggy'],
-    'alice': ['peggy'],
-    'claire': ['thom', 'jonny'],
-    'peggy': [],
-    'anuj': [],
-    'thom': [],
-    'jonny': []
+  'you': ['alice', 'bob', 'claire'],
+  'bob': ['anuj', 'peggy'],
+  'alice': ['peggy'],
+  'claire': ['jonny', 'thom'],
+  'anuj': [],
+  'peggy': [],
+  'jonny': [],
+  'thom': []
 }
 
-
-def findSeller(name):
-    return name[-1] == 'm'  # 判断姓名是否以m结尾，如果是，那么就为售卖者
-
+def person_is_seller(name):
+  return name[-1] == 'm'
 
 def search(name):
-    searchDeque = deque()
-    searchDeque += graph[name]
-    searched = []
-    while searchDeque:
-        person = searchDeque.popleft()
-        if person not in searched:
-            if findSeller(person):
-                print('the seller is ' + person)
-                return True
-            else:
-                searchDeque += graph[person]
-                searched.append(person)
-    return False
+  search_queue = deque() # 创建一个队列
+  search_queue += graph[name] # 将name的邻居加入到这个队列
+  checked = [] # 已检查队列
+  while search_queue: # 只要队列不为空
+    person = search_queue.popleft() #取出其中的第一个人
+    if person not in checked: #这个人没有被检查过
+      if (person_is_seller(person)): #检查这个人是否为芒果销售商
+        print(person + ' is a mango seller')
+        return True
+      else:
+        checked.append(person) # 不是芒果销售商，将其添加到已检查数组中
+        search_queue += graph[person] # 将这个人的邻居加入到搜索队列
+  return False
 
-
-search('you')
+search('you') # thom is a mango seller
+      
